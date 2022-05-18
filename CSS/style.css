@@ -1,0 +1,30 @@
+body,
+html
+{
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: row;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#credentials{
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+#image-car{
+    width: 50vmax;
+    height: 100vmin;
+}
+
