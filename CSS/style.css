@@ -3,28 +3,107 @@ html
 {
     padding: 0;
     margin: 0;
-    width: 100vw;
-    height: 100vh;
-    font-family: 'Times New Roman', Times, serif;
-    display: flex;
-    flex-direction: row;
+    background-image: url("../images/diary.jpg");
+    background-size: 100vmax;
+
 }
 
-.right{
+
+.align-h{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100vmin;
+    width: 100vmax;
+    justify-content: center;
+}
+
+
+
+.center{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-size: x-large;
+    color:rgb(90, 87, 87);
+    background-image: url("../images/diary.jpg");
+    background-size:155%;
+    height: 40%;
+    width: 58%;
+    border-radius: 10px;
+    border-style: groove;
+    border-width: 4px;
+    
+
+}
+
+#credentials_login{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
 }
 
 #credentials{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+
+}
+.input_login{
+    width: 27vmax;
+    height: 5vmin;
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    color: rgb(69, 66, 66);
+    font-weight: bold;
+    text-align: center;
+    background-color: lightgray;
+    border-style: solid;
+    border-color: grey;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+a{
+    color: inherit;
+   text-decoration: none;
+}
+
+button{
+    padding: inherit;
     
-
 }
 
-#image-car{
-    width: 50vmax;
-    height: 100vmin;
+.aux_btn{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
 }
 
+
+.buttons{
+    width: 27.5vmax;
+    height: 5.5vmin;
+    font-size: inherit;
+    background-color: gray;
+    border-color: rgb(68, 65, 65);
+    border-style: solid;
+    border-width: 2px;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-size: medium;
+    padding: 0px;
+    border-radius: 5px;
+    margin: 3px;
+}

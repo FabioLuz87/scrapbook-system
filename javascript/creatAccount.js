@@ -12,22 +12,22 @@ const createAccount = (e) => {
     const confirmacaoSenha = confirmPass.value;
     
     if(isEmpty(usuario) === true){
-        console.log('Preencha o campo da maneira correto');
+        alert('Preencha o campo da maneira correto');
         return;
     }
     
     if(isEmpty(senha) === true){
-        console.log('Preencha o campo da maneira correto');
+        alert('Preencha o campo da maneira correto');
         return;
     }
 
     if(isEmpty(confirmacaoSenha) === true){
-        console.log('Preencha o campo da maneira correto');
+        alert('Preencha o campo da maneira correto');
         return;
     }
 
     if(isEqual(senha, confirmacaoSenha) === false){
-        console.log('As senhas não coincidem');
+        alert('As senhas não coincidem');
         return;
     }
 
