@@ -2,8 +2,16 @@ const currentUser = getInSS('currentUser');
 const btnSaveMessage = document.getElementById('save-message');
 const description = document.getElementById('description');
 const detail = document.getElementById('detail');
+const textUser = document.getElementById('userText')
 let actionEdit = false;
 let indexTOEdition = 0;
+
+textUser.innerHTML = `Bem vindo(a): ${currentUser}`;
+
+const exit = () =>{
+    saveSS('currentUser', '');
+    document.location.href ="../index.html"
+}
 
 const getMessagesUser = () => {
     const userList = getInLS('contas');
@@ -28,7 +36,7 @@ const loadTable = () => {
             <td class="detail_column">${message.detail}</td>
             <td class="buttons_column">
                 <button type="button" onclick="deleteMessage(${index})" class="button red ">Apagar</button>
-                <button type="button" onclick="editMessage(${index})" class="button green">Editar</button>
+                <button type="button" onclick="editMessage(${index})" class="button gray">Editar</button>
             </td>
         `;
         tBody.appendChild(tr);        
