@@ -23,11 +23,11 @@ const loadTable = () => {
         const tr = document.createElement('tr');
 
         tr.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${message.description}</td>
-            <td>${message.detail}</td>
-            <td>
-                <button type="button" onclick="deleteMessage(${index})" class="button red">Apagar</button>
+            <td class="identificator">${index + 1}</td>
+            <td class="description_column">${message.description}</td>
+            <td class="detail_column">${message.detail}</td>
+            <td class="buttons_column">
+                <button type="button" onclick="deleteMessage(${index})" class="button red ">Apagar</button>
                 <button type="button" onclick="editMessage(${index})" class="button green">Editar</button>
             </td>
         `;

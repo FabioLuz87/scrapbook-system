@@ -5,29 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recados</title>
+    <link rel="stylesheet" href="./CSS/styleMessages.css">
     <script src="./javascript/storage.js" defer></script>
     <script src="./javascript/message.js" defer></script>
 </head>
 <body>
-    <h1>Meus recados</h1>
-    <div>
+    <h1>Meus Recados</h1>
+    <div class="center">
         <input id="description" type="text" placeholder="Descrição">
         <input id="detail" type="text" placeholder="Detalhamento">
         <input id="save-message" type="button" value="Salvar">
     </div>
-    <table>
+    <br>
+    <table class="table_style">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Descrição</th>
-                <th>Detalhamento</th>
-                <th>Ação</th>
+                <th class="identificator">#</th>
+                <th class="description_column">Descrição</th>
+                <th class="detail_column">Detalhamento</th>
+                <th class="buttons_column">Ação</th>
             </tr>
         </thead>
         <tbody id="dinamic-table">
            
         </tbody>
-
     </table>
 </body>
 </html>
