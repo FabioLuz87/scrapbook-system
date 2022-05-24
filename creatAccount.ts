@@ -1,15 +1,24 @@
-const createButton = document.getElementById('create-button');
+import { AssertionError } from "assert";
 
-const createEmail = document.getElementById('create-email');
-const createPass = document.getElementById('create-pass');
-const confirmPass = document.getElementById('confirm-pass');
+const createButton = document.getElementById('create-button') as HTMLButtonElement;
 
-const createAccount = (e) => {
+const createEmail = document.getElementById('create-email')as HTMLInputElement ;
+const createPass = document.getElementById('create-pass') as HTMLInputElement;
+const confirmPass = document.getElementById('confirm-pass') as HTMLInputElement;
+
+interface User {
+    email: string;
+    senha: string;
+    messages: Array<Message>;
+  }
+
+
+const createAccount = (e: Event) => {
     e.preventDefault();
 
-    const usuario = createEmail.value;
-    const senha = createPass.value;
-    const confirmacaoSenha = confirmPass.value;
+    const usuario: string = createEmail.value;
+    const senha: string = createPass.value;
+    const confirmacaoSenha: string = confirmPass.value;
     
     if(isEmpty(usuario) === true){
         alert('Preencha o campo da maneira correto');
@@ -32,7 +41,7 @@ const createAccount = (e) => {
     }
 
     //trata os dados da funcao
-    const account = {user: usuario, password: senha, messages: []};
+    const account: any = {user: usuario, password: senha, messages: []};
 
     saveLS('contas', account)
     
@@ -44,7 +53,7 @@ const createAccount = (e) => {
     
 }
 
-const  isEmpty = (comparator) => {
+const  isEmpty = (comparator: string) => {
     if(comparator === ""){
         return true;
     }   
@@ -52,7 +61,7 @@ const  isEmpty = (comparator) => {
 }
 const isThereInLS = () => {};
 
-const isEqual = (comparator1, comparator2) => {
+const isEqual = (comparator1: string, comparator2: string) => {
     if(comparator1 === comparator2){
         return true;
     }
@@ -60,4 +69,3 @@ const isEqual = (comparator1, comparator2) => {
 };
 
 createButton.addEventListener('click', createAccount);
-

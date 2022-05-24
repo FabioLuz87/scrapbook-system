@@ -1,10 +1,15 @@
-const currentUser = getInSS('currentUser');
-const btnSaveMessage = document.getElementById('save-message');
-const description = document.getElementById('description');
-const detail = document.getElementById('detail');
-const textUser = document.getElementById('userText')
-let actionEdit = false;
-let indexTOEdition = 0;
+const currentUser = getInSS('currentUser') as string | null;
+const btnSaveMessage = document.getElementById('save-message') as HTMLButtonElement;
+const description = document.getElementById('description') as HTMLInputElement;
+const detail = document.getElementById('detail') as HTMLInputElement;
+const textUser = document.getElementById('userText') as HTMLParagraphElement;
+let actionEdit: boolean = false;
+let indexTOEdition: number = 0;
+
+interface Message {
+    description: string;
+    detail: string;
+}
 
 textUser.innerHTML = `Bem vindo(a): ${currentUser}`;
 
@@ -15,7 +20,7 @@ const exit = () =>{
 
 const getMessagesUser = () => {
     const userList = getInLS('contas');
-    const position =  userList.findIndex(curUser => curUser.user === currentUser);
+    const position =  userList.findIndex((curUser: { user: string | null; }) => curUser.user === currentUser);
     const objUser = userList[position];
     const messages = objUser.messages; 
     return messages;
@@ -24,10 +29,10 @@ const getMessagesUser = () => {
 
 const loadTable = () => {
     
-    const messages = getMessagesUser();
-    const tBody = document.getElementById('dinamic-table');
+    const messages: Message[] = getMessagesUser();
+    const tBody = document.getElementById('dinamic-table') as HTMLTableElement;
     
-    messages.forEach((message, index) => {
+    messages.forEach((message, index: number) => {
         const tr = document.createElement('tr');
 
         tr.innerHTML = `
@@ -46,8 +51,8 @@ const loadTable = () => {
 loadTable();
 
 const clearTable = () =>{
-    const lines = document.querySelectorAll("#dinamic-table> tr");
-    lines.forEach((line) => line.parentNode.removeChild(line));
+    const lines = document.querySelectorAll("#dinamic-table> tr") as NodeList;
+    lines.forEach((line) => line.parentNode?.removeChild(line));
 }
 
 const saveMessage = () => {
@@ -57,14 +62,14 @@ const saveMessage = () => {
     }
 
     const userList = getInLS('contas');
-    const position =  userList.findIndex(curUser => curUser.user === currentUser);
+    const position =  userList.findIndex((curUser: { user: string | null; }) => curUser.user === currentUser);
     const objUser = userList[position];
     const messages = objUser.messages;  
     const message = {description: description.value, detail: detail.value};
 
     if(actionEdit === true){
         messages[indexTOEdition] = message;
-        indexTOEdition = false;
+        actionEdit = false;
     }else{
         messages.push(message);
     }
@@ -75,9 +80,9 @@ const saveMessage = () => {
     clearInputs();
 }
 
-const deleteMessage = (index) => {
+const deleteMessage = (index: number) => {
     const userList = getInLS('contas');
-    const position =  userList.findIndex(curUser => curUser.user === currentUser);
+    const position =  userList.findIndex((curUser: { user: string | null; }) => curUser.user === currentUser);
     const objUser = userList[position];
     const messages = objUser.messages;  
     messages.splice(index, 1);
@@ -87,7 +92,7 @@ const deleteMessage = (index) => {
     loadTable();
 };
 
-const editMessage = (index) => {
+const editMessage = (index: number) => {
     // const userList = getInLS('contas');
     // const position =  userList.findIndex(curUser => curUser.user === currentUser);
     // const objUser = userList[position];

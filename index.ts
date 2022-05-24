@@ -1,12 +1,12 @@
-const enterButton = document.getElementById('enter-button');
-const userEmail = document.getElementById('user-email');
-const pass = document.getElementById('pass');
+const enterButton = document.getElementById('enter-button') as HTMLButtonElement;
+const userEmail = document.getElementById('user-email') as HTMLInputElement;
+const pass = document.getElementById('pass') as HTMLInputElement;
 
-const login = (e)=> {
+const login = (e: Event)=> {
     e.preventDefault();
 
-    const usuario = userEmail.value;
-    const senha = pass.value;
+    const usuario: string = userEmail.value;
+    const senha:string = pass.value;
     
     const list  = getInLS('contas');
 
