@@ -1,11 +1,11 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const createButton = document.getElementById('create-button');
 const createEmail = document.getElementById('create-email');
 const createPass = document.getElementById('create-pass');
 const confirmPass = document.getElementById('confirm-pass');
 const createAccount = (e) => {
     e.preventDefault();
+    console.log('Aqui');
     const usuario = createEmail.value;
     const senha = createPass.value;
     const confirmacaoSenha = confirmPass.value;
@@ -38,7 +38,6 @@ const isEmpty = (comparator) => {
     }
     return false;
 };
-const isThereInLS = () => { };
 const isEqual = (comparator1, comparator2) => {
     if (comparator1 === comparator2) {
         return true;

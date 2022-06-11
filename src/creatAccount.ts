@@ -1,5 +1,3 @@
-import { AssertionError } from "assert";
-
 const createButton = document.getElementById('create-button') as HTMLButtonElement;
 
 const createEmail = document.getElementById('create-email')as HTMLInputElement ;
@@ -10,11 +8,13 @@ interface User {
     email: string;
     senha: string;
     messages: Array<Message>;
-  }
-
+}
 
 const createAccount = (e: Event) => {
     e.preventDefault();
+
+    console.log('Aqui');
+    
 
     const usuario: string = createEmail.value;
     const senha: string = createPass.value;
@@ -59,7 +59,6 @@ const  isEmpty = (comparator: string) => {
     }   
     return false;
 }
-const isThereInLS = () => {};
 
 const isEqual = (comparator1: string, comparator2: string) => {
     if(comparator1 === comparator2){
