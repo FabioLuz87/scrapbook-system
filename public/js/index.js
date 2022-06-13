@@ -2,34 +2,24 @@
 const enterButton = document.getElementById('enter-button');
 const userEmail = document.getElementById('user-email');
 const pass = document.getElementById('pass');
+const link = document.querySelector('a');
 const login = (e) => {
     e.preventDefault();
     const usuario = userEmail.value;
     const senha = pass.value;
     const list = getInLS('contas');
-    for (let item of list) {
-        if (item.user === usuario && item.password === senha) {
-            saveSS('currentUser', item.user);
-            document.location.href = 'message.html';
-            return;
-        }
+    const userObj = list.find((account) => account.user === usuario && account.password === senha);
+    if (!userObj) {
+        showAlert("Email ou senha inválidos", "danger");
+        return;
     }
-    alert("Usuário ou senha inválidos");
-};
-enterButton.addEventListener('click', login);
-const showAlert = (message, type) => {
-    const bodyAlert = document.createElement('div');
-    bodyAlert.style.zIndex = '999';
-    bodyAlert.classList.add(`bg-${type}`, 'd-flex', 'flex-column', 'align-items-center');
-    const altertMessage = document.createElement('p');
-    altertMessage.classList.add('h3', 'fw-bold', 'text-center');
-    altertMessage.innerText = message;
-    bodyAlert.appendChild(altertMessage);
-    const buildAlert = document.getElementById('buildAlert');
-    buildAlert.appendChild(bodyAlert);
-    buildAlert.classList.remove('d-none');
+    //bloquia os botões para o aviso
+    enterButton.setAttribute('disabled', '');
+    link.removeAttribute('href');
+    saveSS('currentUser', userObj.user);
+    showAlert("Login efetuado com sucesso...", "success");
     setTimeout(() => {
-        buildAlert.innerHTML = '';
-        buildAlert.classList.remove('d-none');
+        document.location.href = 'message.html';
     }, 2000);
 };
+enterButton.addEventListener('click', login);

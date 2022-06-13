@@ -5,43 +5,34 @@ const createPass = document.getElementById('create-pass');
 const confirmPass = document.getElementById('confirm-pass');
 const createAccount = (e) => {
     e.preventDefault();
-    console.log('Aqui');
     const usuario = createEmail.value;
     const senha = createPass.value;
     const confirmacaoSenha = confirmPass.value;
-    if (isEmpty(usuario) === true) {
-        alert('Preencha o campo da maneira correto');
+    if (!usuario) {
+        showAlert('Preencha o campo da maneira correto!', 'danger');
         return;
     }
-    if (isEmpty(senha) === true) {
-        alert('Preencha o campo da maneira correto');
+    if (!senha) {
+        showAlert('Preencha o campo da maneira correto!', 'danger');
         return;
     }
-    if (isEmpty(confirmacaoSenha) === true) {
-        alert('Preencha o campo da maneira correto');
+    if (!confirmacaoSenha) {
+        showAlert('Preencha o campo da maneira correto!', 'danger');
         return;
     }
-    if (isEqual(senha, confirmacaoSenha) === false) {
-        alert('As senhas não coincidem');
+    if (senha !== confirmacaoSenha) {
+        showAlert('As senhas não coincidem!', 'danger');
         return;
     }
     //trata os dados da funcao
     const account = { user: usuario, password: senha, messages: [] };
     saveLS('contas', account);
-    console.log(getInLS('contas'));
     saveSS('currentUser', usuario);
-    document.location.href = "../message.html";
-};
-const isEmpty = (comparator) => {
-    if (comparator === "") {
-        return true;
-    }
-    return false;
-};
-const isEqual = (comparator1, comparator2) => {
-    if (comparator1 === comparator2) {
-        return true;
-    }
-    return false;
+    //bloquia o botão para o tempo do aviso
+    createButton.setAttribute('disabled', '');
+    showAlert('O usuário foi criado com sucesso', 'success');
+    setTimeout(() => {
+        document.location.href = "message.html";
+    }, 1000);
 };
 createButton.addEventListener('click', createAccount);

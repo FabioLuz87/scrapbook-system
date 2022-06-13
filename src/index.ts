@@ -2,45 +2,31 @@ const enterButton = document.getElementById('enter-button') as HTMLButtonElement
 const userEmail = document.getElementById('user-email') as HTMLInputElement;
 const pass = document.getElementById('pass') as HTMLInputElement;
 
+const link = document.querySelector('a') as HTMLAnchorElement;
+
 const login = (e: Event)=> {
     e.preventDefault();
-
+    
     const usuario: string = userEmail.value;
     const senha:string = pass.value;
     
     const list  = getInLS('contas');
 
-    for(let item of list){
-        if(item.user === usuario && item.password === senha){
-            saveSS('currentUser', item.user);
-            document.location.href ='message.html';
-            return;
-        }
+    const userObj = list.find((account: any) => account.user === usuario && account.password === senha);
+    if (!userObj) {
+        showAlert("Email ou senha inválidos","danger");
+        return;
     }
-    alert("Usuário ou senha inválidos");
-}
 
-enterButton.addEventListener('click', login);
-
-const showAlert = (message:string, type: string ):void => {
-    const bodyAlert: HTMLDivElement = document.createElement('div');
-    bodyAlert.style.zIndex='999';
-    bodyAlert.classList.add(`bg-${type}`,'d-flex','flex-column','align-items-center');
-
-    const altertMessage: HTMLParagraphElement = document.createElement('p');
-    altertMessage.classList.add('h3','fw-bold','text-center');
-    altertMessage.innerText = message;
-
-    bodyAlert.appendChild(altertMessage);
-
-    const buildAlert = document.getElementById('buildAlert') as HTMLDivElement;
-
-    buildAlert.appendChild(bodyAlert);
-    buildAlert.classList.remove('d-none');
-
+    //bloquia os botões para o aviso
+    enterButton.setAttribute('disabled','');
+    link.removeAttribute('href');
+    saveSS('currentUser', userObj.user);
+    showAlert("Login efetuado com sucesso...","success");
+    
     setTimeout(()=>{
-        buildAlert.innerHTML = '';
-        buildAlert.classList.remove('d-none');
-    },2000)
-
-} 
+        document.location.href ='message.html'; 
+    },2000);
+}
+    
+enterButton.addEventListener('click', login);

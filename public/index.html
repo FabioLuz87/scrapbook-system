@@ -8,30 +8,31 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
-    <script src="../dist/storage.js" defer></script>
-    <script src="../dist/index.js" defer></script>
+    <script src="./js/storage.js" defer></script>
+    <script src="./js/index.js" defer></script>
+    <script src="./js/utils.js" defer></script>
 </head>
-<body>
+<body class="col-12 ">
     <div id="buildAlert" class="d-none"></div>
     <div id="buildModal" class="d-none"></div>
-    
-
-    <div class="align-h">
-        <section class="center" >
-            <h1>ENTRAR NO SISTEMA DE RECADOS</h1>
-            <form action="">
-                <div id="credentials_login">
-                    <input class="input_login" id="user-email" type="email" placeholder="Usuário(a)">
-                    <input class="input_login" id="pass" type="password" placeholder="Senha">
+    <div class="vh-100 d-flex flex-column justify-content-center">
+        <section class="col-6 offset-3 border border-secondary border-2 border-opacity-50 rounded-3 center" >
+            <h2 class="text-center text-secondary">ENTRAR NO SISTEMA DE RECADOS</h1>
+            <form>
+                <div class="form-floating m-3">
+                    <input type="email" class="form-control border border-secondary border-2 border-opacity-50 text-secondary" id="user-email" placeholder="name@example.com">
+                    <label for="user-email">Email</label>
                 </div>
-
-                <div class="aux_btn">
-                    <button class="buttons" id="enter-button">ENTRAR</button>
-                <a class="buttons" href="creatAccount.html">CRIAR CONTA</a>
-                </div>                
+                <div class="form-floating m-3">
+                    <input type="password" class="form-control border border-secondary border-2 border-opacity-50 text-secondary" id="pass" placeholder="Password">
+                    <label for="pass">Senha</label>
+                </div>
+                <div class="row m-3 d-flex ">
+                    <input type="submit" class="btn btn-secondary my-1" id="enter-button"></input>
+                    <a href="creatAccount.html" class="btn btn-secondary my-1">Criar Conta</a>              
+                </div>
             </form>
         </section>  
     </div>
-
 </body>
 </html>

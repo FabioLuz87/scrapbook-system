@@ -9,7 +9,7 @@ let indexTOEdition = 0;
 textUser.innerHTML = `Bem vindo(a): ${currentUser}`;
 const exit = () => {
     saveSS('currentUser', '');
-    document.location.href = "../index.html";
+    document.location.href = "index.html";
 };
 const getMessagesUser = () => {
     const userList = getInLS('contas');
