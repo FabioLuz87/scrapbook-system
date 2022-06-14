@@ -7,16 +7,17 @@
     <title>creatAccount</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
     <script src="./js/storage.js" defer></script>
     <script src="./js/creatAccount.js" defer></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
     <script src="./js/utils.js" defer></script>
 </head>
-<body class="col-12 ">
+<body class="col-12 vh-100">
     <div id="buildAlert" class="d-none"></div>
     <div id="buildModal" class="d-none"></div>
-    <div class="vh-100 d-flex flex-column justify-content-center">
-        <section class="col-6 offset-3 border border-secondary border-2 border-opacity-50 rounded-3 center" >
+    <button id="exit" class=" col-1 offset-10 btn btn-secondary my-1 transationScale animationbuild" onclick="exit()">Sair</button>
+    <div class="h-75 d-flex flex-column justify-content-center">
+        <section class="col-6  offset-3 border border-secondary border-2 border-opacity-50 rounded-3 center animationbuild" >
             <h2 class="text-center text-secondary">CRIAR CONTA</h2>
             <form>
                 <div class="form-floating m-3">
@@ -32,7 +33,7 @@
                     <label for="confirm-pass">Confirme a Senha</label>
                 </div>
                 <div class="row m-3 d-flex ">
-                    <button type="submit" class="btn btn-secondary my-1 " id="create-button" >CRIAR CONTA AGORA</button>             
+                    <button type="submit" class="btn btn-secondary my-1 transationScale" id="create-button">CRIAR CONTA AGORA</button>             
                 </div>
             </form>
         </section>

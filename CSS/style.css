@@ -7,8 +7,31 @@ body
 
 }
 
-
 .center{
     background-image: url("../images/diary.jpg");
+    background-size: 100vmax;
 }
+
+.transationScale{
+    transition: 500ms;
+}
+
+.transationScale:hover{
+    transform: scale(1.05);
+}
+
+.animationbuild{
+    animation: materializer 1.5s linear;
+}
+
+@keyframes materializer{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    } 
+}
+
+
 

@@ -12,6 +12,10 @@ const showAlert = (message, type) => {
     buildAlert.classList.remove('d-none');
     setTimeout(() => {
         buildAlert.innerHTML = '';
-        buildAlert.classList.remove('d-none');
+        buildAlert.classList.add('d-none');
     }, 2000);
+};
+const exit = () => {
+    clearSS();
+    document.location.href = "index.html";
 };

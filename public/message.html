@@ -5,36 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recados</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../CSS/styleMessages.css">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/js/bootstrap.min.js">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./js/storage.js" defer></script>
     <script src="./js/message.js" defer></script>
+    <script src="./js/utils.js" defer></script>
 </head>
-<body>
-    <h1>Meus Recados</h1>
-    <div class="center">
-        <input id="description" type="text" placeholder="Descrição">
-        <input id="detail" type="text" placeholder="Detalhamento">
-        <input id="save-message" type="button" value="Salvar">
+<body class="col-12 vh-100">
+    <div class="row">
+        <div id="buildAlert" class="d-none"></div>
+        <div id="buildModal" class="modal" tabindex="-1"></div>
+    </div>
+    <div class="container-fluid d-flex flex-row">
+        <p id="userText" class="col-2 my-2"></p>
+        <h3 class="col-5 offset-3">Meus Recados</h3>     
+        <button id="exit" class=" col-2 btn btn-secondary my-1 transitionSize" onclick="exit()">Sair</button>
+    </div>
+    <div class="col-12 d-flex flex-row">
+        <div class="col-5 mx-5">
+            <label for="description" class="form-label text-dark">Descrição</label>
+            <input type="email" class="form-control border border-secondary border-2 border-opacity-50" id="description" placeholder="Ex.: Ir até a oficina mecânica mais próxima...">
+            <button id="save-message" type="button" class="col-12 btn btn-secondary my-1 transitionSize">Salvar Recado</button>
+        </div>
+        <div class="col-6 mx-1">
+            <label for="detail" class="form-label text-dark">Detalhemento</label>
+            <textarea class="form-control border border-secondary border-2 border-opacity-50" id="detail" rows="3"></textarea>
+        </div>
     </div>
     <br>
-    <table class="table_style">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th class="identificator"> <h2>#</h2></th>
-                <th class="description_column"><h2>Descrição</h2></th>
-                <th class="detail_column"><h2>Detalhamento</h2></th>
-                <th class="buttons_column"><h2>Ação</h2></th>
+                <th class="col-1" scope="col">#</th>
+                <th class="col-2" scope="col">Descrição</th>
+                <th class="col-7" scope="col">Detalhamento</th>
+                <th class="col-2" scope="col">Ação</th>
             </tr>
         </thead>
-        <tbody id="dinamic-table">
-           
+        <tbody id="dinamic-table"></tbody>
         </tbody>
     </table>
-
-    <div class="superiorRigth">
-        <p id="userText"></p>
-        <button id="exit" class="button" onclick="exit()">Sair</button>
-    </div>
 </body>
 </html>

@@ -1,61 +1,9 @@
-body,
-html
+body
 {
     padding: 0;
     margin: 0;
     background-image: url("../images/diary.jpg");
-    background-size: 100vmax;
-    font-family: 'Arial Narrow Bold', sans-serif;
-    color: rgb(102, 101, 101);
-
 }
-
-h1{
-    text-align: center;
-}
-
-.center{
-    width: 100vmax;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-}
-
-#description{
-    width: 15vmax;
-    height: 4vmin;
-    border-radius: 5px;
-    margin: 1px;
-}
-
-#detail{
-   width: 50vmax;
-   height: 4vmin;
-   border-radius: 5px;
-   margin: 1px;
-}
-
-#save-message{
-    width: 10vmax;
-    height: 4.5vmin;
-    background-color: grey;
-    color: lightgray;
-    border-radius: 5px;
-    margin: 1px;
-}
-
-.table_style{
-    border-collapse: collapse;
-    width: 100vmax;
-    text-align: center;
-    color: black;
-    font-size: large;
-    
-}
-
-tr:nth-child(even) {background-color:lightgray;}
-
 
 .identificator{
     width: 10vmax;
@@ -64,46 +12,13 @@ tr:nth-child(even) {background-color:lightgray;}
     width: 20vmax;
 }
 
-.detail_column{
-    width: 40vmax;
-    font-weight: bold;
+.transitionSize{
+    transition: 200ms;
 }
 
-.buttons_column{
-    width: 30vmax;
+.transitionSize:hover{
+    transform: scale(1.03);
 }
 
-.button{
-    width: 8vmax;
-    height: 4vmin;
-    border-radius: 5px;
-    border-color: gray;
-}
-
-.red{
-    background-color: lightcoral;
-    color:  rgb(102, 101, 101);
-    font-size: large;
-}
-
-.gray{
-    background-color: lightgray;
-    color:  rgb(102, 101, 101);
-    font-size: large;
-}
-
-
-.superiorRigth{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: row;
-}
-
-#exit{
-    padding: 1px;
-    margin-left: 10px;
-}
 
 

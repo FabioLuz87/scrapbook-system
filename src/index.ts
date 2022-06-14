@@ -11,7 +11,6 @@ const login = (e: Event)=> {
     const senha:string = pass.value;
     
     const list  = getInLS('contas');
-
     const userObj = list.find((account: any) => account.user === usuario && account.password === senha);
     if (!userObj) {
         showAlert("Email ou senha inválidos","danger");

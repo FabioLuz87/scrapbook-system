@@ -13,11 +13,6 @@ interface Message {
 
 textUser.innerHTML = `Bem vindo(a): ${currentUser}`;
 
-const exit = () =>{
-    saveSS('currentUser', '');
-    document.location.href ="index.html"
-}
-
 const getMessagesUser = () => {
     const userList = getInLS('contas');
     const position =  userList.findIndex((curUser: { user: string | null; }) => curUser.user === currentUser);
@@ -34,35 +29,34 @@ const loadTable = () => {
     
     messages.forEach((message, index: number) => {
         const tr = document.createElement('tr');
+      
 
         tr.innerHTML = `
-            <td class="identificator">${index + 1}</td>
-            <td class="description_column">${message.description}</td>
-            <td class="detail_column">${message.detail}</td>
-            <td class="buttons_column">
-                <button type="button" onclick="deleteMessage(${index})" class="button red ">Apagar</button>
-                <button type="button" onclick="editMessage(${index})" class="button gray">Editar</button>
+            <td>${index + 1}</td>
+            <td>${message.description}</td>
+            <td>${message.detail}</td>
+            <td>
+                <button type="button" onclick="deleteMessage(${index})" class="btn btn-danger opacity-50 transitionSize">Apagar</button>
+                <button type="button" onclick="editMessage(${index})" class="btn btn-secondary transitionSize">Editar</button>
             </td>
         `;
         tBody.appendChild(tr);        
     });
 }
 
-loadTable();
-
-const clearTable = () =>{
+const clearTable = () => {
     const lines = document.querySelectorAll("#dinamic-table> tr") as NodeList;
     lines.forEach((line) => line.parentNode?.removeChild(line));
 }
 
-const saveMessage = () => {
-    if(description.value === '' || detail.value === ''){
-        alert("Preencha os campos corretamente!");
+const saveMessage =  () => {
+    if(!description.value && !detail.value) {
+        showAlert("Preencha os campos corretamente!",'danger');
         return;
     }
 
     const userList = getInLS('contas');
-    const position =  userList.findIndex((curUser: { user: string | null; }) => curUser.user === currentUser);
+    const position =  userList.findIndex((curUser: { user: string | null}) => curUser.user === currentUser);
     const objUser = userList[position];
     const messages = objUser.messages;  
     const message = {description: description.value, detail: detail.value};
@@ -81,6 +75,7 @@ const saveMessage = () => {
 }
 
 const deleteMessage = (index: number) => {
+    
     const userList = getInLS('contas');
     const position =  userList.findIndex((curUser: { user: string | null; }) => curUser.user === currentUser);
     const objUser = userList[position];
@@ -93,9 +88,6 @@ const deleteMessage = (index: number) => {
 };
 
 const editMessage = (index: number) => {
-    // const userList = getInLS('contas');
-    // const position =  userList.findIndex(curUser => curUser.user === currentUser);
-    // const objUser = userList[position];
     const messages = getMessagesUser();
     description.value = messages[index].description;
     detail.value = messages[index].detail;
@@ -109,5 +101,6 @@ const clearInputs = () => {
 }
 
 btnSaveMessage.addEventListener('click', saveMessage);
+loadTable();
 
 

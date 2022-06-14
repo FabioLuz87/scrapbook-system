@@ -9,19 +9,25 @@ const createAccount = (e) => {
     const senha = createPass.value;
     const confirmacaoSenha = confirmPass.value;
     if (!usuario) {
-        showAlert('Preencha o campo da maneira correto!', 'danger');
+        showAlert('Preencha o campo da maneira correta!', 'danger');
         return;
     }
     if (!senha) {
-        showAlert('Preencha o campo da maneira correto!', 'danger');
+        showAlert('Preencha o campo da maneira correta!', 'danger');
         return;
     }
     if (!confirmacaoSenha) {
-        showAlert('Preencha o campo da maneira correto!', 'danger');
+        showAlert('Preencha o campo da maneira correta!', 'danger');
         return;
     }
     if (senha !== confirmacaoSenha) {
         showAlert('As senhas não coincidem!', 'danger');
+        return;
+    }
+    const list = getInLS('contas');
+    const userObj = list.find((account) => account.user === usuario);
+    if (userObj) {
+        showAlert('Já existe usuário com este email, escolha outro por favor.', 'danger');
         return;
     }
     //trata os dados da funcao
