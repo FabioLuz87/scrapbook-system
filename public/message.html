@@ -13,38 +13,58 @@
     <script src="./js/utils.js" defer></script>
 </head>
 <body class="col-12 vh-100">
-    <div class="row">
-        <div id="buildAlert" class="d-none"></div>
-        <div id="buildModal" class="modal" tabindex="-1"></div>
-    </div>
+    <div id="buildAlert" class="d-none"></div>
     <div class="container-fluid d-flex flex-row">
-        <p id="userText" class="col-2 my-2"></p>
-        <h3 class="col-5 offset-3">Meus Recados</h3>     
-        <button id="exit" class=" col-2 btn btn-secondary my-1 transitionSize" onclick="exit()">Sair</button>
+        <p id="userText" class="col-md-2 d-none d-md-block my-md-2"></p>
+        <h3 class="col-md-5 d-none d-md-block offset-3">Meus Recados</h3>     
+        <button id="exit" class=" col-md-2 container-fluid btn btn-secondary my-1 transitionSize" onclick="exit()">Sair</button>
     </div>
     <div class="col-12 d-flex flex-row">
-        <div class="col-5 mx-5">
+        <div class="col-5 mx-lg-5 mx-md-4">
             <label for="description" class="form-label text-dark">Descrição</label>
             <input type="email" class="form-control border border-secondary border-2 border-opacity-50" id="description" placeholder="Ex.: Ir até a oficina mecânica mais próxima...">
             <button id="save-message" type="button" class="col-12 btn btn-secondary my-1 transitionSize">Salvar Recado</button>
         </div>
-        <div class="col-6 mx-1">
+        <div class="col-md-6 col-7 mx-md-1">
             <label for="detail" class="form-label text-dark">Detalhemento</label>
             <textarea class="form-control border border-secondary border-2 border-opacity-50" id="detail" rows="3"></textarea>
         </div>
     </div>
     <br>
-    <table class="table table-striped table-bordered">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th class="col-1" scope="col">#</th>
+                <th class="col-1 fs" scope="col">#</th>
                 <th class="col-2" scope="col">Descrição</th>
-                <th class="col-7" scope="col">Detalhamento</th>
+                <th class="col-md-7 container-fluid" scope="col">Detalhamento</th>
                 <th class="col-2" scope="col">Ação</th>
             </tr>
         </thead>
         <tbody id="dinamic-table"></tbody>
         </tbody>
-    </table>
+      </table>
+    </div>
+    
+    <!-- Modal de confirmação -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Você vai apagar um recado:</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">Tens certeza?</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button id="btn-delete" type="button" class="btn btn-danger">
+              Excluir
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>

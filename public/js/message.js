@@ -20,11 +20,11 @@ const loadTable = () => {
     messages.forEach((message, index) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${index + 1}</td>
+            <td >${index + 1}</td>
             <td>${message.description}</td>
             <td>${message.detail}</td>
             <td>
-                <button type="button" onclick="deleteMessage(${index})" class="btn btn-danger opacity-50 transitionSize">Apagar</button>
+                <button type="button" onclick="isDelete(${index})" class="btn btn-danger opacity-50 transitionSize">Apagar</button>
                 <button type="button" onclick="editMessage(${index})" class="btn btn-secondary transitionSize">Editar</button>
             </td>
         `;
@@ -37,7 +37,12 @@ const clearTable = () => {
 };
 const saveMessage = () => {
     if (!description.value && !detail.value) {
+        //bloquia os botões para o aviso
+        btnSaveMessage.setAttribute('disabled', '');
         showAlert("Preencha os campos corretamente!", 'danger');
+        setTimeout(() => {
+            document.location.href = 'message.html';
+        }, 2000);
         return;
     }
     const userList = getInLS('contas');
@@ -58,6 +63,11 @@ const saveMessage = () => {
     loadTable();
     clearInputs();
 };
+const isDelete = (index) => {
+    modal.show();
+    const btnDelete = document.querySelector('#btn-delete');
+    btnDelete.setAttribute('onclick', `deleteMessage(${index})`);
+};
 const deleteMessage = (index) => {
     const userList = getInLS('contas');
     const position = userList.findIndex((curUser) => curUser.user === currentUser);
@@ -66,6 +76,7 @@ const deleteMessage = (index) => {
     messages.splice(index, 1);
     objUser.messages = messages;
     setInLS('contas', userList);
+    modal.hide();
     clearTable();
     loadTable();
 };
@@ -82,3 +93,5 @@ const clearInputs = () => {
 };
 btnSaveMessage.addEventListener('click', saveMessage);
 loadTable();
+//@ts-ignorets-ignore
+const modal = new bootstrap.Modal(document.querySelector('#confirmModal'));
