@@ -24,3 +24,14 @@ A tabela que compõe a página de recados é dinâmica, sendo ilcluídos os reca
 Cada linha da tabela, possui um identificador, uma descrição, um detalhamento e dois botões de ação para cada recado.
 
 Na parte superior direita, o sistema oferece um botão de Log out e informa o usuário corrente.
+
+Foram adicionadas interfaces responsivas para o projeto, através da impelementação do Bootsprap 5.2, o código foi convertido para TypeScript.
+Foram tambem adicionados modais e alertas.
+
+Veja, por exemplo, na tela de Samsung Galasxy S8+.
+
+![image](https://user-images.githubusercontent.com/88909472/173725029-07f6c803-0dfd-4986-a26f-774fd56f0566.png)
+
+Por hora é isto.
+
+Novo Hamburo, 14 de Junho de 2022, às 23:41.
